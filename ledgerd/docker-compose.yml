@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: ledger, POSTGRES_PASSWORD: ledger, POSTGRES_DB: ledger }
+    ports: ["5433:5432"]
+    volumes: ["./migrations:/docker-entrypoint-initdb.d:ro"]   # runs *.sql on first boot
+  ledgerd:
+    build: .
+    environment:
+      DATABASE_URL: postgres://ledger:ledger@db:5432/ledger
+      LEDGER_API_KEY: dev-key-change-me
+    ports: ["8080:8080"]
+    depends_on: [db]

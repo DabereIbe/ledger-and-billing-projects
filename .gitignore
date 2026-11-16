@@ -1,0 +1,28 @@
+# ---- Secrets: NEVER commit these ----
+.env
+.env.*
+!.env.example
+
+# ---- Node / frontend ----
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+yarn-error.log*
+*.log
+coverage/
+
+# ---- Go ----
+/ledgerd/ledgerd
+/ledgerd/ledgerd.exe
+*.exe
+*.test
+*.out
+go.work
+go.work.sum
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
